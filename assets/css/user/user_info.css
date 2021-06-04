@@ -1,0 +1,64 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #F2F2F2;
+    padding: 15px;
+}
+
+.layui-card {
+    border-top: 3px solid #18bc9c;
+    border-radius: 3px;
+}
+
+.useravatar {
+    width: auto;
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+}
+
+.useravatar .layui-nav-img {
+    width: 100px;
+    height: auto;
+    margin-right: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-email {
+    color: #777777;
+}
+
+p {
+    margin: 0 0 8.5px;
+}
+
+.active {
+    background-color: #fff;
+    border-top: 3px solid #18bc9c;
+    border-radius: 3px;
+}
+
+.layui-tab-content {
+    background-color: #fff;
+}
+
+@media screen and (min-width:992px) {
+    .layui-tab {
+        margin-top: 0px;
+    }
+    .layui-col-md4 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .layui-col-md8 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
