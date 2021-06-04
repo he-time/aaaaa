@@ -29,17 +29,31 @@ body {
 
 /* 登录 */
 
-.login-box .layui-form {
+.layui-form {
     padding: 0 30px;
 }
 
-.login-box .layui-form .links {
+.layui-form .links {
     display: flex;
     justify-content: flex-end;
 }
 
-.login-box .layui-form .links a {
+.layui-form .links a {
     font-size: 14px;
+}
+
+.layui-form .layui-form-item {
+    position: relative;
+}
+
+.layui-form .layui-form-item .layui-icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.layui-form .layui-form-item .layui-input {
+    padding-left: 32px;
 }
 
 
