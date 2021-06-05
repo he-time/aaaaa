@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 导入 layui 的css样式 -->
+    <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
+    <!-- 导入 自定义 的css样式 -->
+    <link rel="stylesheet" href="/assets/css/article/art_cate.css">
+</head>
+
+<body>
+    <div class="layui-row">
+        <!-- 卡片区域 -->
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">文章类别</div>
+                <div class="layui-card-body">
+                    <div class="layui-card-title">
+                        <button type="button" class="layui-btn layui-btn-sm" id="btnAddCate">
+                            <i class="layui-icon layui-icon-add-1"></i>
+                            <span>添加</span>
+                        </button>
+                    </div>
+                    <table class="layui-table">
+                        <colgroup>
+                            <col />
+                            <col />
+                            <col width="200" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>分类名称</th>
+                                <th>分类别名</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 表格数据的 模板 -->
+    <script type="text/html" id="tp1-table">
+        {{each data}}
+        <tr>
+            <td>{{$vlaue.name}}</td>
+            <td>{{$vlaue.alias}}</td>
+            <td>
+                <button type="button" class="layui-btn layui-btn-xs layui-btn-normal btn-edit" data-id="{{$value.id}}">编辑</button>
+                <button type="button" class="layui-btn layui-btn-xs layui-btn-danger btn-del" data-id="{{$value.id}}">删除</button>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+
+
+    <!-- 添加弹出层 的模板 -->
+    <script type="text/html" id="dialog-add">
+        <form class="layui-form" id="form-add">
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required lay-verify="required" placeholder="请输入分类名称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类别名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="alias" required lay-verify="required" placeholder="请输入分类别名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">确认添加</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </script>
+
+    <!-- 修改弹出层 的模板 -->
+    <script type="text/html" id="dialog-eidt">
+        <form class="layui-form" id="form-edit">
+            <input type="hidden" name="id">
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required lay-verify="required" placeholder="请输入分类名称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类别名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="alias" required lay-verify="required" placeholder="请输入分类别名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">确认修改</button>
+                </div>
+            </div>
+        </form>
+    </script>
+
+    <!--导入 JQuery js文件 -->
+    <script src="/assets/lib/jquery.js"></script>
+    <script src="/assets/lib/layui/layui.all.js"></script>
+    <!-- 导入 模板引擎JS 文件 -->
+    <script src="/assets/lib/template-web.js"></script>
+    <!-- 导入公共的baseAPI  JS文件 -->
+    <script src="/assets/js/baseAPI.js"></script>
+    <!-- 导入 自定义的JS文件 -->
+    <script src="/assets/js/article/art_cate.js"></script>
+</body>
+
+</html>

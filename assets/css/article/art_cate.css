@@ -1,0 +1,26 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #F2F2F2;
+    padding: 15px;
+}
+
+.layui-card {
+    border-top: 3px solid #18bc9c;
+    border-radius: 3px;
+}
+
+.layui-card-title {
+    padding: 15px 15px;
+}
+
+#form-add,
+#form-edit {
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 30px;
+}

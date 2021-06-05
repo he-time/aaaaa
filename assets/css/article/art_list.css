@@ -1,0 +1,15 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #F2F2F2;
+    padding: 15px;
+}
+
+.layui-card {
+    border-top: 3px solid #18bc9c;
+    border-radius: 3px;
+}
