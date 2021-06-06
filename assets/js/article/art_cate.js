@@ -93,7 +93,6 @@ $(function() {
     })
 
     //通过代理的形式,为 btn-del 绑定点击事件
-    var indexEdit = null
     $('tbody').on('click', '.btn-del', function() {
         var id = $(this).attr('data-id')
 
@@ -107,10 +106,10 @@ $(function() {
                         return layer.msg('删除分类失败！', { icon: 2 })
                     }
                     layer.msg('删除分类成功！', { icon: 1 })
-                    layer.close(index);
                     initArtCateList()
                 }
             })
+            layer.close(index);
         })
     })
 })

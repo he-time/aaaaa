@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 导入 layui 的css样式 -->
+    <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
+    <!--导入 第三方cropper插件的样式 -->
+    <link rel="stylesheet" href="/assets/lib/cropper/cropper.css" />
+    <!-- 导入 自定义 的css样式 -->
+    <link rel="stylesheet" href="/assets/css/article/art_add.css">
+</head>
+
+<body>
+    <!-- 卡片区域 -->
+    <div class="layui-card">
+        <div class="layui-card-header">发布文章</div>
+        <div class="layui-card-body">
+            <form class="layui-form" id="form-add">
+                <!-- 第一行 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <!-- 第二行 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章类别</label>
+                    <div class="layui-input-block">
+                        <select name="cate_id" lay-verify="required"></select>
+                    </div>
+                </div>
+                <!-- 第三行 -->
+                <div class="layui-form-item layui-form-text">
+                    <!-- 左侧的label -->
+                    <label class="layui-form-label">文章内容</label>
+                    <!-- 为富文本编辑器的外部的容器设置宽度 -->
+                    <div class="layui-input-block">
+                        <!-- 重要：将来这个textarea 会被初始化为富文本编辑器 -->
+                        <textarea name="content" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <!-- 第四行 -->
+                <div class="layui-form-item">
+                    <!-- 左侧的label -->
+                    <label class="layui-form-label">文章封面</label>
+                    <!-- 选择封面区域 -->
+                    <div class="layui-input-block cover-box">
+                        <!-- 左侧裁剪区域 -->
+                        <div class="cover-left">
+                            <img id="image" src="/assets/images/sample2.jpg" alt="">
+                        </div>
+                        <!-- 右侧预览区域 和 选择封面区域 -->
+                        <div class="cover-right">
+                            <!-- 预览的区域 -->
+                            <div class="img-preview"></div>
+                            <!-- 通过 accept 属性， 可以指定，允许用户选择什么类型的文件 -->
+                            <input type="file" id="file" accept="image/png,image/jpeg">
+                            <!-- 选择封面的按钮 -->
+                            <button type="button" class="layui-btn layui-btn-danger" id="btnChooseImage">选择封面</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 第五行 -->
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit id='btnSeve2'>发布</button>
+                        <button class="layui-btn layui-btn-primary" lay-submit id='btnSeve2'>存为草稿</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 文章类别 可选项的模板引擎 -->
+    <script type="text/html" id="tpl-cate">
+        <option value="">请选择文章类别</option>
+        {{each data}}
+        <option value="{{$value.id}}">{{$value.name}}</option>
+        {{/each}}
+    </script>
+
+    <!--导入 JQuery js文件 -->
+    <script src="/assets/lib/jquery.js"></script>
+    <script src="/assets/lib/layui/layui.all.js"></script>
+    <!-- 导入公共的baseAPI  JS文件 -->
+    <script src="/assets/js/baseAPI.js"></script>
+    <!-- 导入 模板引擎JS 文件 -->
+    <script src="/assets/lib/template-web.js"></script>
+    <!-- 导入  富文本编辑器 插件的JS 文件 -->
+    <script src="/assets/lib/tinymce/tinymce.min.js"></script>
+    <script src="/assets/lib/tinymce/tinymce_setup.js"></script>
+    <!-- 导入 Cropper插件的JS文件 -->
+    <script src="/assets/lib/cropper/Cropper.js"></script>
+    <script src="/assets/lib/cropper/jquery-cropper.js"></script>
+    <!-- 导入 自定义的JS文件 -->
+    <script src="/assets/js/article/art_add.js"></script>
+</body>
+
+</html>

@@ -96,14 +96,62 @@ $(function() {
             count: total, //总数据的条数
             limt: q.pagesize, //每页显示几条数据
             curr: q.pagenum, //设置默认被选中的页码数
+            layout: ['count', 'limit', 'prev', 'page', 'next', 'skip'],
+            limits: [2, 3, 5, 10],
             // 分页发生切换的时候，触发 jump 回调
-            jump: function(obj) {
+            //触发 jump 回调的方式有两种：
+            //1.点击页码值得时候，就会触发jump 回调
+            //2. 只要调用了 laypage.render() 方法，就会触发jump 回调
+            jump: function(obj, first) {
                 //把最新的页面值，赋值到 q 这个查询参数中 
                 q.pagenum = obj.curr
 
-                //根据最新 的 q 获取对应的数据列表，并渲染表格
-                initTable()
+                //把最新的条目数，赋值到 q 这个查询参数中
+                q.pagesize = obj.limt
+
+                if (!first) {
+                    //根据最新 的 q 获取对应的数据列表，并渲染表格
+                    initTable()
+                }
+
             }
         })
     }
+
+    // 通过代理的形式，为删除按钮 定义点击事件
+    var indexDel = null
+    $('tbody').on('click', '.btn-del', function() {
+        //先获取所有删除按钮的个数
+        var len = $('.btn-del').length
+
+        //获取文章ID
+        var id = $(this).attr('data-id')
+
+        //提示用户是否要删除
+
+        layer.confirm('您确认需要删除吗？', { icon: 3, title: '提示' }, function(index) {
+            $.ajax({
+                method: 'GET',
+                url: '/my/article/delete/' + id,
+                success: function(res) {
+                    if (res.status !== 0) {
+                        return layer.msg('删除文章失败！', { icon: 2 })
+                    }
+                    layer.msg('删除文章成功！', { icon: 1 })
+
+                    //当数据删除完成后，需要判断当前页码值里面是否还存在数据,
+                    if (len === 1) {
+                        //如果len 的值 等于 1 ,就代表 页面上删除完成后，已经没有数据了
+                        //如果没有剩余的数据了，需要对当前页码值 减 1
+                        //但是页面值最小必须是 1
+                        q.pagenum = q.pagenum === 1 ? 1 : q.pagenum - 1
+                    }
+                    //然后在重新调用initTable 方法
+                    initTable()
+                }
+            })
+            layer.close(index);
+        })
+    })
+
 })
